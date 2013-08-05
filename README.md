@@ -15,12 +15,11 @@ Please make pull requests to add more settings.
 
 ## Configuration
 
+* *vlc* must me available in your PATH
+
+* *rtmpdump* must me available in your PATH
+
 > npm install node-stream-tv -g
-
-* VLC must me available in your PATH
-
-* rtmpdump must me available in your PATH
-
 
 ## Usage
 
@@ -28,5 +27,6 @@ Please make pull requests to add more settings.
 
 
 ---
-Oscar Brito aka aetheon
+
+Oscar Brito
 
