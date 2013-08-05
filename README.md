@@ -26,6 +26,6 @@ Please make pull requests to add more settings.
 > stream-tv
 
 
-[link Oscar Brito]: http://divhide.com
+[Oscar Brito](http://divhide.com)
 
 
