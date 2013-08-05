@@ -33,6 +33,6 @@
     "preinstall": "node scripts/pre-install.js"
   },
   "bin": {
-    "stream-tv": "bin/stream-tv"
+    "stream-tv": "bin/stream-tv.js"
   }
 }
