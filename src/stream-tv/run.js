@@ -47,18 +47,22 @@ module.exports = function(options){
 	// start seeing
 	//var child = process.exec(cmd);
 	var c = child.exec(cmd);
-	c.stderr.pipe(process.stderr);
-	c.stdout.pipe(process.stdout);
+	//c.stderr.pipe(process.stderr);
+	//c.stdout.pipe(process.stdout);
 	
 	c.on("close", function(){
-		process.kill(child.pid);
-		process.exit();
+		try { 
+			process.kill(c.pid);
+		}
+		catch(e){
+		}
+		//process.exit();
 	});
 
 	c.on("data", function(data){
 		console.log(data);
 	});
 
-	return child;
+	return c;
 	
 };

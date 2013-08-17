@@ -1,4 +1,6 @@
 {
+	"name": "RT News",
+
 	"rtmp": "rtmp://fms5.visionip.tv/live",
 	"swf": "http://rt.com/s/swf/player5.4.viral.swf",
 	"page": "http://rt.com/on-air/",

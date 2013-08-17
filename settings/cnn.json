@@ -1,4 +1,7 @@
 {
+
+	"name": "CNN",
+
 	"rtmp": "rtmp://a.cdn.msnbclive.eu/edge/cnn_live",
 	"swf": "http://msnbclive.eu/player.swf",
 	"page": "http://blog.livenewschat.tv/situation-chatroom",

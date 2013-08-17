@@ -14,9 +14,9 @@ module.exports = {
 	 * @return{Object} Where key is the name of the file normalized and the value its
 	 * the filename
 	 */
-	getAllSettings: function(){
+	getChannels: function(){
 
-		var files = fs.readdirSync(__dirname + "/../settings/");
+		var files = fs.readdirSync(__dirname + "/../../settings/");
 
 		files = _.filter(files, function(fileName){
 			return fileName.match(/\.json$/gi);
@@ -39,6 +39,18 @@ module.exports = {
 
 		return settings;
 
+	},
+
+
+	getChannel: function(channelJsonFile){
+
+		var setting = require(__dirname + "/../../settings/" + channelJsonFile);
+
+		return setting;
+
 	}
+
+
+
 
 };

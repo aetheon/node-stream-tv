@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 var _ = require('lodash'),
-	runner = require('../lib/run.js');
-	helpers = require('../lib/helpers.js');
+	runner = require('../src/stream-tv/run.js');
+	settings = require('../src/stream-tv/settings.js');
 
 
 // initializing
 var args = process.argv,
-	settings = helpers.getAllSettings();
+	settings = settings.getChannels();
 
 
 // get settings name from input

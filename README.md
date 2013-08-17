@@ -21,9 +21,37 @@ Please make pull requests to add more settings.
 
 > npm install node-stream-tv -g
 
-## Usage
+## Command line Usage
 
-> stream-tv
+```
+	 > stream.tv axn
+	 > stream.tv cnn
+	 > stream.tv discovery
+	 > stream.tv dragonball
+	 > stream.tv eurosport-2
+	 > stream.tv eurosport
+	 > stream.tv fox-crime
+	 > stream.tv fox-movies
+	 > stream.tv fox
+	 > stream.tv nbc
+	 > stream.tv rt-news
+	 > stream.tv rtp1
+	 > stream.tv rtpi
+	 > stream.tv scyfy
+	 > stream.tv sky-sports-1
+	 > stream.tv sky-sports-2
+	 > stream.tv sky-sports-3
+	 > stream.tv sky-sports-4
+	 > stream.tv sky-sports-news
+```
+
+## Server Usage
+
+```
+	 
+	 > stream.server
+
+```
 
 
 [Oscar Brito](http://divhide.com)

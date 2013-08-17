@@ -1,4 +1,6 @@
 {
+	"name": "RTP1",
+
 	"rtmp": "rtmp://h2j2.rtp.pt/livetv",
 	"swf": "http://www.rtp.pt/play/player.swf",
 	"page": "http://www.rtp.pt/services/rtpplay/pub/config_page/rtp.pt/play/direto/tv/rtp1",
