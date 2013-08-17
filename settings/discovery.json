@@ -1,0 +1,9 @@
+{
+	"rtmp": "rtmp://edge.isearch.to/edge",
+	"swf": "http://player.ilive.to/player_ilive_2.swf",
+	"page": "http://www.ilive.to/",
+	"playpath": "pluifrgyd9hwij8",
+	"token": "",
+	"rtmpBuffer": 5000,
+	"vlcBuffer": 10000
+}

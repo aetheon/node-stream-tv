@@ -1,0 +1,9 @@
+{
+	"rtmp": "rtmp://a.cdn.msnbclive.eu/edge/cnn_live",
+	"swf": "http://msnbclive.eu/player.swf",
+	"page": "http://blog.livenewschat.tv/situation-chatroom",
+	"playpath": "",
+	"token": "",
+	"rtmpBuffer": 5000,
+	"vlcBuffer": 10000
+}

@@ -3,6 +3,6 @@
 	"swf": "http://www.rtp.pt/play/player.swf",
 	"page": "http://www.rtp.pt/services/rtpplay/pub/config_page/rtp.pt/play/direto/tv/rtp1",
 	"playpath": "2ch5h264",
-	"rtmpBuffer": 2000,
-	"vlcBuffer": 2000
+	"rtmpBuffer": 5000,
+	"vlcBuffer": 10000
 }

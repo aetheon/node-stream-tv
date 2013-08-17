@@ -29,6 +29,8 @@ switch(settingName){
 				console.log("\t > stream.tv", s);
 			}
 		);
+
+		console.log("\n");
 		break;
 
 	default:

@@ -1,0 +1,9 @@
+{
+	"rtmp": "rtmp://46.246.124.6:443/liverepeater",
+	"swf": "http://97ff0e7e610f20512dbe-483e6ce63d68aeb3d05af6c054efb801.r29.cf1.rackcdn.com/nomore.swf",
+	"page": "http://movietrailers.yt/player2.php?id=20724&amp;width=620&amp;height=490",
+	"playpath": "20724",
+	"token": "",
+	"rtmpBuffer": 5000,
+	"vlcBuffer": 10000
+}

@@ -1,0 +1,9 @@
+{
+	"rtmp": "rtmp://fms5.visionip.tv/live",
+	"swf": "http://rt.com/s/swf/player5.4.viral.swf",
+	"page": "http://rt.com/on-air/",
+	"playpath": "RT_2",
+	"token": "",
+	"rtmpBuffer": 5000,
+	"vlcBuffer": 10000
+}
