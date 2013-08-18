@@ -22,7 +22,7 @@
 				<ul data-role="listview" data-count-theme="c" data-inset="true">
 				    {% for channel in channels %}
 				    <li>
-				    	<a href="/play?channel={{channel.file}}">{{channel.name}}</a>
+				    	<a href="/play?channel={{channel.file}}" rel="external">{{channel.name}}</a>
 				    </li>
 				    {% endfor %}
 				</ul>

@@ -6,8 +6,9 @@ var _ = require('lodash'),
 module.exports = function(app){
 
 	var currentChannelIndex = 0,
-		currentPlayingPid = 0,
-		channelsHash = settings.getChannels();
+		currentPlaying = null,
+		
+		channelsHash = settings.getChannels(),
 		channelsArray = _.values(channelsHash);
 
 
@@ -47,18 +48,28 @@ module.exports = function(app){
 	 };
 
 
+	var playErrorCallback = function(){
+
+		if(!currentPlaying)
+			// ignore if no recorded playing pid
+			return;
+
+		// hoisted call
+		play(currentPlaying);
+	}
+
 	/*
 	 * Play
 	 */
 	var play = function(channelDef){
 
-		if(currentPlayingPid)
-			try{ process.kill(c.pid); } catch(e){ }
+		// set 
+		currentPlaying = false;
 
 		Player.stop(
 			function(){
-				var process = Player.play(channelDef, function(){ play(channelDef); });
-				currentPlayingPid = process.pid;		
+				var process = Player.play(channelDef, playErrorCallback);
+				currentPlaying = channelDef;
 			}
 		);
 		
