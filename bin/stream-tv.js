@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var _ = require('lodash'),
-	runner = require('../src/stream-tv/run.js');
+	Player = require('../src/stream-tv/player.js');
 	settings = require('../src/stream-tv/settings.js');
 
 
@@ -14,6 +14,12 @@ var args = process.argv,
 var settingName = "";
 if(args.length > 2)	settingName = settings[args[2]];
 
+// stop player on exit
+process.on('SIGINT', function() {
+	Player.stop(function(){
+		process.exit();	
+	});
+});
 
 // Main switch
 switch(settingName){
@@ -36,6 +42,6 @@ switch(settingName){
 	default:
 		// stream the given setting
 		var setting = require("../settings/" + settingName);
-		runner(setting);
+		Player.play(setting);
 		break;
 };

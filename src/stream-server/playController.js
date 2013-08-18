@@ -1,7 +1,7 @@
 
 var _ = require('lodash'),
 	settings = require('../stream-tv/settings'),
-	run = require('../stream-tv/run');
+	Player = require('../stream-tv/Player');
 
 module.exports = function(app){
 
@@ -55,9 +55,13 @@ module.exports = function(app){
 		if(currentPlayingPid)
 			try{ process.kill(c.pid); } catch(e){ }
 
-		var process = run(channelDef);
-
-		currentPlayingPid = process.pid;
+		Player.stop(
+			function(){
+				var process = Player.play(channelDef, function(){ play(channelDef); });
+				currentPlayingPid = process.pid;		
+			}
+		);
+		
 	};
 
 
