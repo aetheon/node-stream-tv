@@ -5,7 +5,7 @@ var _ = require("lodash"),
 
 // IMPORTANT: in osx alias to vlc doesn't work
 var vlc = "vlc",
-	commandTemplate = 'rtmpdump -v -r "{{& rtmp}}" -W "{{& swf}}" -p "{{& page}}" {{& other}} --live -b "{{& rtmpBuffer}}" -V | {{& vlc }} --fullscreen --file-caching="{{& vlcBuffer}}" -';
+	commandTemplate = 'rtmpdump -v -r "{{& rtmp}}" -W "{{& swf}}" -p "{{& page}}" {{& other}} --live -b "{{& rtmpBuffer}}" -V | {{& vlc }} --fullscreen --file-caching="{{& vlcBuffer}}" --no-video-deco --no-embedded-video -';
 
 var runningPid = 0;
 
