@@ -1,7 +1,7 @@
 {
   "name": "node-stream-tv",
   "preferGlobal": true,
-  "version": "0.0.3",
+  "version": "0.0.5",
   "author": "Oscar Brito <aetheon@gmail.com>",
   "description": "Node module to handle RMTP streaming.",
   "contributors": [
