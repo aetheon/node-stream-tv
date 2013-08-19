@@ -1,7 +1,7 @@
 
 var _ = require('lodash'),
 	settings = require('../stream-tv/settings'),
-	Player = require('../stream-tv/Player');
+	Player = require('../stream-tv/player');
 
 module.exports = function(app){
 
