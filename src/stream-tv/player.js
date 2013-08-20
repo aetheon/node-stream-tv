@@ -4,7 +4,7 @@ var _ = require("lodash"),
 	child = require("child_process");
 
 // IMPORTANT: in osx alias to vlc doesn't work
-var vlc = "vlc",
+var vlc = "cvlc",
 	commandTemplate = 'rtmpdump -v -r "{{& rtmp}}" -W "{{& swf}}" -p "{{& page}}" {{& other}} --live -b "{{& rtmpBuffer}}" -V | {{& vlc }} --fullscreen --file-caching="{{& vlcBuffer}}" --no-video-deco --no-embedded-video --aspect-ratio="16:9" -';
 
 var runningPid = 0;
