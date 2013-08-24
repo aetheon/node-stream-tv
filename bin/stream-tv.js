@@ -32,7 +32,7 @@ switch(settingName){
 		_.each(
 			_.keys(settings),
 			function(s){
-				console.log("\t > stream.tv", s);
+				console.log("\t > stream-tv", s);
 			}
 		);
 
