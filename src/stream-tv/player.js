@@ -3,17 +3,7 @@ var _ = require("lodash"),
 	mustache = require("mustache"),
 	child = require("child_process");
 
-// IMPORTANT: in osx alias to vlc doesn't work
-var vlc = "cvlc",
-	commandTemplate = 'rtmpdump -v -r "{{& rtmp}}" -W "{{& swf}}" -p "{{& page}}" {{& other}} --live -b "{{& rtmpBuffer}}" -V | {{& vlc }} --fullscreen --file-caching="{{& vlcBuffer}}" --no-video-deco --no-embedded-video --aspect-ratio="16:9" -';
-
 var runningPid = 0;
-
-
-
-
-
-
 
 
 
@@ -35,12 +25,22 @@ var Player = {
 
 		// if is rtmp use rtmpdump to pipe
 		if(def.rtmp){
+			def.other = def.other || "";
 
 			if(def.playpath)
 				def.other = mustache.render(' --playpath "{{& playpath}}"', def);
 
 			if(def.token)
 				def.other += mustache.render(' --token "{{& token}}"', def);
+
+			if(def.app)
+				def.other += mustache.render(' --app "{{& app}}"', def);
+
+			if(def.conn)
+				def.other += mustache.render(' --conn "{{& conn}}"', def);
+
+			if(def.flashVer)
+				def.other += mustache.render(' --flashVer "{{& flashVer}}"', def);
 
 			if(def.other)
 				def.other = def.other.trim();

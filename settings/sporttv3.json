@@ -1,0 +1,6 @@
+{
+	"name": "Sport TV 3",
+
+	"file": "http://live.flexstream.net:1935/loadbalance/tres33/playplist.m3u8",
+	"vlcBuffer": 10000
+}
