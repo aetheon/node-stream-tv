@@ -64,6 +64,17 @@ module.exports = function(app){
 	});
 
 
+	app.get('/stop', function(req, res){
+	  
+	  console.log("Stopping");
+
+	  State.setCurrentChannel(null);
+	  Player.stop();
+
+	  res.redirect('/');
+	  
+	});
+
 
 	app.get('/next', function(req, res){
 	  
@@ -72,7 +83,7 @@ module.exports = function(app){
 	  var nextIndex = current.index++;
 	  var channel = State.getChannel(nextIndex);
 
-	  console.log("Playing...", nextIndex, channel);
+	  console.log("Playing...", nextIndex, channel.name);
 
 	  play(channel);
 

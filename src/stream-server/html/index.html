@@ -13,12 +13,25 @@
 		
 		<div data-role="page">
 			
-			<div data-role="header">
-				<h1>Stream-TV</h1>
-				
-				<a href="/prev" data-role="button" data-icon="arrow-l" data-iconpos="left" rel="external">Previous</a>
-				<a href="/next" data-role="button" data-icon="arrow-r" data-iconpos="right" rel="external">Next</a>
-				
+			<div data-role="header" data-position="fixed">
+				<div class="ui-grid-b">
+					<div class="ui-block-a">
+						<a href="/stop" data-role="button" data-icon="arrow-l" data-iconpos="left" rel="external" data-theme="b" data-inline="true">Stop</a>
+					</div>
+					<div class="ui-block-b">
+						
+					</div>
+					<div class="ui-block-c">
+						{% if selected.name %}
+							<h1>{{ selected.name }}</h1>
+						{% endif %}
+						<div data-role="controlgroup" data-type="horizontal" style="float: right">
+							<a href="/prev" data-role="button" rel="external" data-theme="b" data-inline="true" data-icon="arrow-l" data-iconpos="left">Previous</a>
+							<a href="/next" data-role="button" rel="external" data-theme="b" data-inline="true" data-icon="arrow-r" data-iconpos="right">Next</a>
+						</div>
+					</div>
+				</div>
+
 			</div>
 			
 			<div data-role="content">
@@ -31,11 +44,6 @@
 				    {% endfor %}
 				</ul>
 
-			</div>
-
-
-			<div data-role="footer">
-			lol
 			</div>
 
 			
