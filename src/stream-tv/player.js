@@ -137,7 +137,7 @@ var Player = {
 		c.on("close", function(){
 			try { 
 				if(errorCallback){
-					errorCallback();
+					errorCallback(options);
 				}
 			}
 			catch(e){

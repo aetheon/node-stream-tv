@@ -1,58 +1,23 @@
 
 var _ = require('lodash'),
-	settings = require('../stream-tv/settings'),
 	Player = require('../stream-tv/player');
+	State = require('./state');
 
 module.exports = function(app){
 
-	var currentChannelIndex = 0,
-		currentPlaying = null,
-		
-		channelsHash = settings.getChannels(),
-		channelsArray = _.values(channelsHash);
+	
+	var playErrorCallback = function(channelDef){
 
+		console.log("onError:", channelDef.name);
 
-	/*
-	 * setCurrentIndex
-	 */
-
-	var setCurrentIndex = function(index){
-
-		if(index > channelsArray.length){
-			index = 0;
+		var currentPlaying = State.getCurrentChannel();
+		if(!currentPlaying || currentPlaying.id != channelDef.id) {
+			// ignore if no recorded playing pid
+			console.log("Ignoring... no longer playing");
+			return;
 		}
 
-		currentChannelIndex = index;
-
-	};
-
-	/*
-	 * getChannelDef
-	 */
-	 var getChannelDef = function(indexOrName){
-
-	 	var settingsFileName = "";
-	 	
-	 	if( typeof indexOrName == "number"){
-	 		settingsFileName = channelsArray[indexOrName];
-	 	}
-
-	 	if( typeof indexOrName == "string"){
-	 		settingsFileName = channelsHash[indexOrName];
-	 	}
-
-	 	var channelDef = settings.getChannel(settingsFileName);
-
-	 	return channelDef;
-
-	 };
-
-
-	var playErrorCallback = function(){
-
-		if(!currentPlaying)
-			// ignore if no recorded playing pid
-			return;
+		console.log("Start playing again...sorry!");
 
 		// hoisted call
 		play(currentPlaying);
@@ -63,13 +28,15 @@ module.exports = function(app){
 	 */
 	var play = function(channelDef){
 
+		if(!channelDef)
+			return;
+
 		// set 
-		currentPlaying = false;
+		State.setCurrentChannel(channelDef);
 
 		Player.stop(
 			function(){
 				var process = Player.play(channelDef, playErrorCallback);
-				currentPlaying = channelDef;
 			}
 		);
 		
@@ -81,38 +48,51 @@ module.exports = function(app){
 	 *
 	 */
 
+	
+	app.get('/play', function(req, res){
+	  
+	  var channel = req.query.channel;
+	  // run channel
+	  var channelDef = State.getChannel(channel);
+	  
+	  console.log("Playing...", channel.name);
+
+	  play(channelDef);
+
+	  res.redirect('/' + "#" + State.getCurrentChannel().id);
+	  
+	});
+
+
+
 	app.get('/next', function(req, res){
 	  
-	  // run channel
-	  var channelDefFile = getChannelDef(currentChannelIndex);
-	  setCurrentIndex(currentChannelIndex++);
-	  play(channelDefFile);
+	  
+	  var current = State.getCurrentChannel() || { index: 0};
+	  var nextIndex = current.index++;
+	  var channel = State.getChannel(nextIndex);
 
-	  res.redirect('/');
+	  console.log("Playing...", nextIndex, channel);
+
+	  play(channel);
+
+	  res.redirect('/' + "#" + State.getCurrentChannel().id);
 	  
 	});
 
 
 	app.get('/prev', function(req, res){
 	  
-	  // run channel
-	  var channelDefFile = getChannelDef(currentChannelIndex);
-	  setCurrentIndex(currentChannelIndex--);
-
-	  play(channelDefFile);
 	  
-	  res.redirect('/');
-	  
-	});
+	  var current = State.getCurrentChannel() || { index: -1};
+	  var prevIndex = current.index--;
+	  var channel = State.getChannel(prevIndex);
 
-	app.get('/play', function(req, res){
-	  
-	  var channel = req.query.channel;
-	  // run channel
-	  var channelDefFile = getChannelDef(channel);
-	  play(channelDefFile);
+	  console.log("Playing...", prevIndex, channel.name);
 
-	  res.redirect('/');
+	  play(channel);
+
+	  res.redirect('/' + "#" + State.getCurrentChannel().id);
 	  
 	});
 

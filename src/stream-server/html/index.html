@@ -15,26 +15,33 @@
 			
 			<div data-role="header">
 				<h1>Stream-TV</h1>
+				
+				<a href="/prev" data-role="button" data-icon="arrow-l" data-iconpos="left" rel="external">Previous</a>
+				<a href="/next" data-role="button" data-icon="arrow-r" data-iconpos="right" rel="external">Next</a>
+				
 			</div>
 			
 			<div data-role="content">
 				
 				<ul data-role="listview" data-count-theme="c" data-inset="true">
 				    {% for channel in channels %}
-				    <li>
-				    	<a href="/play?channel={{channel.file}}" rel="external">{{channel.name}}</a>
+				    <li data-theme="{% if channel.id == selected.id %}b{% else %}a{% endif %}">
+				    	<a id="{{channel.id}}" href="/play?channel={{channel.id}}" rel="external">{{channel.name}}</a>
 				    </li>
 				    {% endfor %}
 				</ul>
 
 			</div>
 
-			<div data-role="footer" class="ui-bar" data-position="fixed">
-			    <a href="/prev" data-role="button" data-icon="arrow-l" data-iconpos="left">Previous</a>
-				<a href="/next" data-role="button" data-icon="arrow-r" data-iconpos="right">Next</a>
+
+			<div data-role="footer">
+			lol
 			</div>
+
 			
 		</div>
+
+
 
 	</body>
 

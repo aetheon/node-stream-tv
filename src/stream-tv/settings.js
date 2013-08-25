@@ -46,7 +46,7 @@ module.exports = {
 
 		var setting = require(__dirname + "/../../settings/" + channelJsonFile);
 
-		return setting;
+		return _.cloneDeep(setting);
 
 	}
 

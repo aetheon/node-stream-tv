@@ -1,19 +1,8 @@
 
 var _ = require('lodash'),
-	settings = require('../stream-tv/settings');
+	State = require('./state');
 
 module.exports = function(app){
-
-	var channelsHash = settings.getChannels(),
-		channelsArray = [];
-
-	_.each(
-		_.keys(channelsHash), 
-		function(key){
-			var channel = settings.getChannel(channelsHash[key]);
-			channel.file = key;
-			channelsArray.push(channel);
-	});
 
 	/*
 	 * Controller urls
@@ -22,7 +11,12 @@ module.exports = function(app){
 
 	app.get('/', function(req, res){
 	  
-	  res.render("index.html", { channels: channelsArray });
+	  var data = {
+	  	channels: State.getChannels(),
+	  	selected: State.getCurrentChannel() || {}
+	  }; 
+
+	  res.render("index.html", data);
 
 	});
 
